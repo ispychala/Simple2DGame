@@ -21,6 +21,11 @@ public class PlayerController : MonoBehaviour
     float distCovered, timer;
     Vector3 delta;
 
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
         CheckSwipe();
@@ -29,21 +34,33 @@ public class PlayerController : MonoBehaviour
         {
             movement.x = 0;
             movement.y = 1;
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 1);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
         }
         else if (swipeDown)
         {
             movement.x = 0;
             movement.y = -1;
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", -1);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
         }
         else if (swipeLeft)
         {
             movement.x = -1;
             movement.y = 0;
+            animator.SetFloat("Horizontal", -1);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
         }
         else if (swipeRight)
         {
             movement.x = 1;
             movement.y = 0;
+            animator.SetFloat("Horizontal", 1);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
         }
         else if (shooting)
         {
@@ -165,6 +182,16 @@ public class PlayerController : MonoBehaviour
     {
         startTouch = swipeDelta = Vector2.zero;
         isDragging = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        movement *= -1;
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(this);
+        }
     }
 
 }

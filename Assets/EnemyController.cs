@@ -29,6 +29,9 @@ public class EnemyController : MonoBehaviour
             walkTime = Random.Range(0.5f, 3f);
             movementDir = Random.Range(0, directions.Length);
             movement = directions[movementDir];
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
         }
         else
         {
@@ -44,6 +47,9 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         movement *= -1;
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
 
         if (collision.gameObject.tag == "Player")
         {
