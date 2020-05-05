@@ -9,12 +9,10 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed = 1f;
     public Rigidbody2D rb;
     public Animator animator;
+    public GameObject deathEffect;
     Vector2[] directions = { new Vector2(0, 1), new Vector2(0, -1), new Vector2(1, 0), new Vector2(-1, 0) }; //up, down, right, left
     int movementDir;
     public float walkTime = 2f;
-
-    public BoxCollider2D coll;
-
 
     void Start()
     {
@@ -51,9 +49,15 @@ public class EnemyController : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Bullet")
         {
-            Destroy(this);
+            Die();
         }
+    }
+
+    void Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

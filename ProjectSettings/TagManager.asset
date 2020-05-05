@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Walls
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -15,9 +16,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Enemies
+  - Player
   - 
   - 
   - 
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Blood
+    uniqueID: 2580001467
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
