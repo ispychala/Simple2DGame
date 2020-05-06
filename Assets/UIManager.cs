@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public GameManager gameManager;
     public Sprite[] playerChoices;
     public AnimatorOverrideController[] playerAnimations;
     public Image characterImage;
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
 
     public void PickCharacter()
     {
-
+        gameObject.SetActive(false);
+        gameManager.OnCharacterPicked(playerAnimations[current]);
     }
 }

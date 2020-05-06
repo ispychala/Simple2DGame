@@ -5,12 +5,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public SceneBuilder builder;
+    public AnimatorOverrideController[] enemies;
+
+    AnimatorOverrideController player;
+
 
     void Start()
     {
         builder.BuildScene();
     }
 
+    public void OnCharacterPicked(AnimatorOverrideController aoc)
+    {
+        player = aoc;
+        StartGame();
+    }
 
     void StartGame()
     {
@@ -28,6 +37,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         // hide end panel
+        // show start panel
         //Start game
     }
 }

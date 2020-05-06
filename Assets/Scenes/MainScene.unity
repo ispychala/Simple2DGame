@@ -848,7 +848,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1627953129}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1206,6 +1206,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builder: {fileID: 923294174}
+  enemies:
+  - {fileID: 22100000, guid: ddb90c7d24ab7bd4b845e3417a00c10f, type: 2}
+  - {fileID: 22100000, guid: 8020822a429be65468c2d987ffdb4085, type: 2}
+  - {fileID: 22100000, guid: 83fd8fc77eaf2724e9f28eb01620b810, type: 2}
+  - {fileID: 22100000, guid: bfe7769a32860c244bd3b9223a1aad53, type: 2}
+  - {fileID: 22100000, guid: 49f9ba48e94e44e4cb17111952efdd1c, type: 2}
+  - {fileID: 22100000, guid: 42d08882c4567ac44a9398914ee52f2b, type: 2}
 --- !u!1 &974546858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1405,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1627953129}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1527,10 +1534,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 151257976}
-  - {fileID: 1827969804}
   - {fileID: 1686524659}
   - {fileID: 545523511}
   - {fileID: 1429213252}
+  - {fileID: 1827969804}
   m_Father: {fileID: 749705420}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1588,6 +1595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89612e42b0468e42a08bb8ad20a0e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 923294176}
   playerChoices:
   - {fileID: 21300000, guid: 3b63c144d895a3c4e9f2ea29f61e4edd, type: 3}
   - {fileID: 21300000, guid: 3eab58f650595654d94d47233a69035a, type: 3}
@@ -1634,7 +1642,7 @@ RectTransform:
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1627953129}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1764,7 +1772,7 @@ RectTransform:
   m_Children:
   - {fileID: 974546859}
   m_Father: {fileID: 1627953129}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1814,8 +1822,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 923294174}
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 1627953132}
+        m_MethodName: PickCharacter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
