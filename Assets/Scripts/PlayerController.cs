@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     public GameObject deathEffect;
     public GameObject bullet;
 
+    public AudioSource audioSource;
+    public AudioClip hitSound;
+    public AudioClip deathSound;
+    public AudioClip throwSound;
+
+
     Vector2 movement;
     Vector2 startTouch, swipeDelta;
 
@@ -77,6 +83,7 @@ public class PlayerController : MonoBehaviour
         Bullet bscript = b.GetComponent<Bullet>();
         bscript.movement = movement;
         bscript.moveSpeed = moveSpeed * 3;
+        audioSource.PlayOneShot(throwSound, 1f);
     }
 
     void Walk(Vector2 endTouch)
@@ -121,10 +128,16 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            audioSource.PlayOneShot(hitSound, 0.5f);
+        }
     }
 
     void Die()
     {
+        audioSource.PlayOneShot(deathSound, 1f);
+        movement = Vector2.zero;
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

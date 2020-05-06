@@ -5,15 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public Vector2 movement = new Vector2(0,-1);
+    public Vector2 movement;
     public float moveSpeed = 3f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag != "Player")
-        {
-            Destroy(gameObject);
-        }   
+        Destroy(gameObject);  
     }
 
     private void FixedUpdate()
