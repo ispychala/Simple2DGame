@@ -12,7 +12,7 @@ public class SceneBuilder : MonoBehaviour
     int screenWidth;
     int halfBlock;
 
-    void Start()
+    public void BuildScene()
     {
         cam = Camera.main;
 
@@ -22,8 +22,6 @@ public class SceneBuilder : MonoBehaviour
 
         BuildVerticalBoundaries();
         BuildHorizontalBoundaries();
-
-        StartGame();
     }
 
     void BuildVerticalBoundaries()
@@ -62,32 +60,15 @@ public class SceneBuilder : MonoBehaviour
         }
     }
 
-    void CreateEnemies()
+    public void CreateEnemies()
     {
 
     }
 
-    void CreatePlayer()
+    public void CreatePlayer()
     {
 
     }
 
-    void StartGame()
-    {
-        CreateEnemies();
-        CreatePlayer();
-        // hide start panel
-    }
 
-    void EndGame()
-    {
-        // show end panel
-        // destroy player and enemies
-    }
-
-    void RestartGame()
-    {
-        // hide end panel
-        //Start game
-    }
 }

@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            audioSource.PlayOneShot(hitSound);
+            audioSource.PlayOneShot(hitSound, 0.5f);
         }
     }
 
@@ -68,6 +68,6 @@ public class EnemyController : MonoBehaviour
         audioSource.PlayOneShot(deathSound, 1f);
         movement = Vector2.zero;
         Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject);
     }
 }
