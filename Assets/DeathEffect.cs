@@ -8,7 +8,7 @@ public class DeathEffect : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, time);
+        //Destroy(gameObject, time);
     }
     
 }

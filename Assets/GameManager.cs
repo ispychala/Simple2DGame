@@ -1,20 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public SceneBuilder builder;
     public AudioSource audioSource;
 
-    public GameObject startPanel, endPanel;
+    public GameObject startPanel, endPanel, endPanelText;
 
     public GameObject characterContainer;
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     public AnimatorOverrideController[] enemyAnimations;
-    
 
+    GameObject player;
     AnimatorOverrideController playerAnimation;
     int numEnemies;
 
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         CreatePlayer();
         startPanel.SetActive(false);
         enemiesAlive = numEnemies;
+        playerAlive = true;
     }
 
     void CreateEnemies()
@@ -55,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     void CreatePlayer()
     {
-        GameObject player = Instantiate(playerPrefab, new Vector3(0, -2, 0), Quaternion.identity, characterContainer.transform);
+        player = Instantiate(playerPrefab, new Vector3(0, -2, 0), Quaternion.identity, characterContainer.transform);
         player.GetComponent<Animator>().runtimeAnimatorController = playerAnimation;
         player.GetComponent<PlayerController>().audioSource = audioSource;
         player.GetComponent<PlayerController>().gm = this;
@@ -79,22 +81,22 @@ public class GameManager : MonoBehaviour
     {
         if (playerAlive)
         {
-            // you won
+            player.GetComponent<PlayerController>().moveSpeed = 0f;
+            endPanelText.GetComponent<Text>().text = "You Won!";
         }
         else
         {
-            //you lost
+            endPanelText.GetComponent<Text>().text = "You Lost.";
         }
         endPanel.SetActive(true);
-
-        foreach (Transform character in characterContainer.transform)
-        {
-            Destroy(character.gameObject);
-        }
     }
 
     public void RestartGame()
     {
+        foreach (Transform character in characterContainer.transform)
+        {
+            Destroy(character.gameObject);
+        }
         endPanel.SetActive(false);
         startPanel.SetActive(true);
     }
