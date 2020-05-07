@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject deathEffect;
     public GameObject bullet;
 
+    public GameManager gm;
     public AudioSource audioSource;
     public AudioClip hitSound;
     public AudioClip deathSound;
@@ -139,6 +140,7 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(deathSound, 1f);
         movement = Vector2.zero;
         Instantiate(deathEffect, transform.position, Quaternion.identity);
+        gm.OnPlayerDead();
         Destroy(gameObject);
     }
 

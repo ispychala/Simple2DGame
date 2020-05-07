@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     int movementDir;
     public float walkTime = 2f;
 
+    public GameManager gm;
     public AudioSource audioSource;
     public AudioClip hitSound;
     public AudioClip deathSound;
@@ -68,6 +69,7 @@ public class EnemyController : MonoBehaviour
         audioSource.PlayOneShot(deathSound, 1f);
         movement = Vector2.zero;
         Instantiate(deathEffect, transform.position, Quaternion.identity);
+        gm.OnEnemyDead();
         Destroy(gameObject);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SceneBuilder : MonoBehaviour
 {
+    public Transform wallContainer;
     public GameObject buildingBlock;
     public int blockSize = 32;
     private Camera cam;
@@ -34,9 +35,9 @@ public class SceneBuilder : MonoBehaviour
         {
             pos = cam.ScreenToWorldPoint(new Vector3(xPos, yPos, 0));
             pos.z = 0;
-            Instantiate(buildingBlock, pos, Quaternion.identity);
+            Instantiate(buildingBlock, pos, Quaternion.identity, wallContainer);
             pos.x *= -1;
-            Instantiate(buildingBlock, pos, Quaternion.identity);
+            Instantiate(buildingBlock, pos, Quaternion.identity, wallContainer);
 
             yPos -= blockSize;
         }
@@ -52,23 +53,11 @@ public class SceneBuilder : MonoBehaviour
         {
             pos = cam.ScreenToWorldPoint(new Vector3(xPos, yPos, 0));
             pos.z = 0;
-            Instantiate(buildingBlock, pos, Quaternion.identity);
+            Instantiate(buildingBlock, pos, Quaternion.identity, wallContainer);
             pos.y *= -1;
-            Instantiate(buildingBlock, pos, Quaternion.identity);
+            Instantiate(buildingBlock, pos, Quaternion.identity, wallContainer);
 
             xPos -= blockSize;
         }
     }
-
-    public void CreateEnemies()
-    {
-
-    }
-
-    public void CreatePlayer()
-    {
-
-    }
-
-
 }
