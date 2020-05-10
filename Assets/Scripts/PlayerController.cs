@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
 
     Vector2 movement;
-    Vector2 startTouch, swipeDelta;
+    Vector2 startTouch, swipeDelta, touchPosition;
 
     void Update()
     {
@@ -65,14 +65,17 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
             {
-                swipeDelta = Input.touches[0].position - startTouch;
-                if (swipeDelta.sqrMagnitude <= 100)
+                if (Input.touches.Length == 0)
                 {
                     Shoot();
                 }
                 else
                 {
-                    Walk();
+                    swipeDelta = Input.touches[0].position - startTouch;
+                    if (swipeDelta.sqrMagnitude > 5000)
+                    {
+                        Walk();
+                    }
                 }
             }
         }

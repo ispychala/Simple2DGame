@@ -871,6 +871,8 @@ MonoBehaviour:
   characterContainer: {fileID: 1551353607}
   playerPrefab: {fileID: 5590563020690620695, guid: b245fc74a59273a4580e80bd3f7eeb7d,
     type: 3}
+  bulletPrefab: {fileID: 6319622478736315062, guid: ed18f88e0b84f60418969c2106e5a936,
+    type: 3}
   enemyPrefab: {fileID: 6186403678499731136, guid: 636f58bee80dd894ea65dc6d00cbf108,
     type: 3}
   enemyAnimations:
