@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public SceneBuilder builder;
     public AudioSource audioSource;
+    public AudioClip gameWonSound, gameLostSound;
 
     public GameObject startPanel, endPanel, endPanelText;
 
@@ -83,10 +84,12 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<PlayerController>().moveSpeed = 0f;
             endPanelText.GetComponent<Text>().text = "You Won!";
+            audioSource.PlayOneShot(gameWonSound, 1f);
         }
         else
         {
             endPanelText.GetComponent<Text>().text = "You Lost.";
+            audioSource.PlayOneShot(gameLostSound, 1f);
         }
         endPanel.SetActive(true);
     }

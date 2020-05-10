@@ -863,6 +863,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   builder: {fileID: 923294174}
   audioSource: {fileID: 1878004274}
+  gameWonSound: {fileID: 8300000, guid: e9c6e0377507b6047a5b25b1f1c8fbfd, type: 3}
+  gameLostSound: {fileID: 8300000, guid: 6756edc0f3c8365498a74d383e73596f, type: 3}
   startPanel: {fileID: 1627953128}
   endPanel: {fileID: 681468455}
   endPanelText: {fileID: 897493397}
