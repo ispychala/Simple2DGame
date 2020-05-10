@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SceneBuilder : MonoBehaviour
 {
-    public Transform wallContainer;
     public GameObject buildingBlock;
     public int blockSize = 32;
+    public Transform wallContainer;
+
     private Camera cam;
 
     int screenHeight;
@@ -23,6 +24,7 @@ public class SceneBuilder : MonoBehaviour
 
         BuildVerticalBoundaries();
         BuildHorizontalBoundaries();
+        AddColliders();
     }
 
     void BuildVerticalBoundaries()
@@ -59,5 +61,34 @@ public class SceneBuilder : MonoBehaviour
 
             xPos -= blockSize;
         }
+    }
+
+    void AddColliders()
+    {
+        BoxCollider2D wall;
+        Vector3 screen = cam.ScreenToWorldPoint(new Vector3(screenWidth, screenHeight, 0));
+        float width = screen.x;
+        float height = screen.y;
+        float block = 0.009f * blockSize;
+ 
+        //west
+        wall = wallContainer.gameObject.AddComponent<BoxCollider2D>();
+        wall.size = new Vector2(block, 2 * height);
+        wall.offset = new Vector2(block/2 - width, 0);
+
+        //east
+        wall = wallContainer.gameObject.AddComponent<BoxCollider2D>();
+        wall.size = new Vector2(block, 2 * height);
+        wall.offset = new Vector2(width - block/2, 0);
+
+        //north
+        wall = wallContainer.gameObject.AddComponent<BoxCollider2D>();
+        wall.size = new Vector2(2 * width, block);
+        wall.offset = new Vector2(0, height - block/2);
+
+        //south
+        wall = wallContainer.gameObject.AddComponent<BoxCollider2D>();
+        wall.size = new Vector2(2 * width, block);
+        wall.offset = new Vector2(0, block/2 - height);
     }
 }

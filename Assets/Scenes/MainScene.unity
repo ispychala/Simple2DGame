@@ -831,10 +831,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd2f487015c37344a37d301370f7c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallContainer: {fileID: 1370068892}
   buildingBlock: {fileID: 3688269734966671895, guid: 6414044a7437f0b43bec1c21b613db3a,
     type: 3}
   blockSize: 32
+  wallContainer: {fileID: 1370068892}
 --- !u!4 &923294175
 Transform:
   m_ObjectHideFlags: 0
@@ -865,6 +865,7 @@ MonoBehaviour:
   audioSource: {fileID: 1878004274}
   startPanel: {fileID: 1627953128}
   endPanel: {fileID: 681468455}
+  endPanelText: {fileID: 897493397}
   characterContainer: {fileID: 1551353607}
   playerPrefab: {fileID: 5590563020690620695, guid: b245fc74a59273a4580e80bd3f7eeb7d,
     type: 3}
