@@ -44,13 +44,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            if ((Vector2)Input.mousePosition == startTouch)
+            swipeDelta = (Vector2)Input.mousePosition - startTouch;
+            if (swipeDelta.sqrMagnitude <= 100)
             {
                 Shoot();
             }
             else
             {
-                Walk((Vector2)Input.mousePosition);
+                Walk();
             }
         }
         #endregion
@@ -64,13 +65,14 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
             {
-                if (Input.touches[0].position == startTouch)
+                swipeDelta = Input.touches[0].position - startTouch;
+                if (swipeDelta.sqrMagnitude <= 100)
                 {
                     Shoot();
                 }
                 else
                 {
-                    Walk(Input.touches[0].position);
+                    Walk();
                 }
             }
         }
@@ -87,9 +89,8 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(throwSound, 1f);
     }
 
-    void Walk(Vector2 endTouch)
+    void Walk()
     {
-        swipeDelta = endTouch - startTouch;
         float x = swipeDelta.x;
         float y = swipeDelta.y;
 
@@ -139,7 +140,7 @@ public class PlayerController : MonoBehaviour
     {
         audioSource.PlayOneShot(deathSound, 1f);
         movement = Vector2.zero;
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Instantiate(deathEffect, transform.position, Quaternion.identity, transform.parent);
         gm.OnPlayerDead();
         Destroy(gameObject);
     }

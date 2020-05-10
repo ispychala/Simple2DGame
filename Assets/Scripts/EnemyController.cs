@@ -19,10 +19,6 @@ public class EnemyController : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip deathSound;
 
-    void Start()
-    {
-        // initial position
-    }
 
     // Update is called once per frame
     void Update()
@@ -68,7 +64,7 @@ public class EnemyController : MonoBehaviour
     {
         audioSource.PlayOneShot(deathSound, 1f);
         movement = Vector2.zero;
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Instantiate(deathEffect, transform.position, Quaternion.identity, transform.parent);
         gm.OnEnemyDead();
         Destroy(gameObject);
     }
